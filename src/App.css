@@ -1,38 +1,188 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@import "reset.css";
+body {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between
+}
+main {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+h1 {
+  font-size: 10vh;
+}
+section.menu {
+  height: 6rem;
+  width: 70vw;
+  border: solid orangered 4px;
+  display: flex;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* background-color: rgba(200, 200, 200, 0.5); */
+}
+.listen {
+  height: 100%;
+  width: 60%; 
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.textincome {
+  height: 100%;
+  width: 94%;
+  padding-left: 8px;
+  border-left: none;
+  border-right: solid gray 2px;
+}
+.taskAddHolder {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow: hidden;
+  
+}
+.taskAdder {
+  height: 2rem;
+  width: 80%;
+  background-color: rgba(200, 200, 200, 0.5);
+  border: solid rgba(200, 200, 200, 0.5) 4px;
+  border-radius: 1rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.add {
+  height: 100%;
+  width: 2rem;
+  background-color: white;
+  padding-right: 10px;
+  font-size: 1.8rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchbar {
+  height: 2rem;
+  width: 80%;
+  background-color: rgba(200, 200, 200, 0.5);
+  border: solid rgba(200, 200, 200, 0.5) 4px;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+} 
+.loupe {
+  height: 100%;
+  width: 2rem;
+  background-color: white;
+  padding-right: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.allTasks {
+  height: 44vh;
+  width: 70vw;
+  scroll-margin-block-end: inherit;
+  overflow-x: scroll;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: content-box;
+  /* background-color: rgba(200, 200, 200, 0.5);
+  border: solid rgba(200, 200, 200, 0.5) 4px; */
+}
+.scrollable {
+  height: 100%;
+  width: 100%;
+}
+.checkbox {
+  background-color: orangered;
+  /* ne marche pas (n'est pas personalisable?) */
+}
+.task {
+  width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.trash {
+  height: 2rem;
+  width: 2rem;
+  background: rgba(255,0,0,0.1);
+  border: solid rgba(255,0,0,0.1) 3px;
+  border-radius: 1rem;
+}
+.taskToDo {
+  min-height: 2rem;
+  width:calc(100% - 10px);
+  background: rgba(255,0,0,0.1);
+  border: solid  rgba(255,0,0,0.1) 4px;
+  margin: 2px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.taskDone {
+  min-height: 2rem;
+  width:calc(100% - 10px);
+  background-color: rgba(0,255,0,0.1);
+  border: solid rgba(0,255,0,0.1) 4px;
+  text-decoration: line-through;
+  margin: 2px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.ghost {
+  height: 100%;
+  width: 20%;
+  background-color: blueviolet;
+}
+.theme {
+  height: 100%;
+  width: 20%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+}
+.themebar {
+  height: 3rem;
+  width: 1rem;
+  background-color: aqua;
+  border-radius: 0.5rem;
+  margin-left: 1.4rem;
+  position: relative;
+}
+.themecommand {
+  height: 1.6rem;
+  width: 1.6rem;
+  background-color: red;
+  border: solid rgba(0, 0, 0, 0.8) 4px;
+  border-radius: 0.8rem;
+  position: absolute;
+  left: -0.3rem;
+  top: -0.2rem
+}
+footer {
+  height: 20vh;
+  width: 100vw;
+  background-color: rgba(200, 200, 200, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
