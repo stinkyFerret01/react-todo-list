@@ -5,6 +5,7 @@ function App() {
   const [task, setTask] = useState(""); //'task' est une tache a ajouter
   const [taskList, setTaskList] = useState([]); //'taskList' est un ensemble donnée associées à chaque 'task', on appelera cet ensemble 'tasko'"
   const [input, setInput] = useState("");
+  const [darktheme, setDarktheme] = useState(false);
   const searchedTaskList = taskList.filter(
     (tasko) => tasko[1].indexOf(input) >= 0
   );
@@ -15,13 +16,20 @@ function App() {
   //ci-dessous, la fonction qui push un 'tasko' dans la 'taskList'
   const handleSubmit = (event) => {
     event.preventDefault();
-    const coptaskList = [...taskList];
-    coptaskList.unshift([taskList.length, task]);
-    const steptaskList = [];
-    coptaskList.map((tasko, index) => {
-      steptaskList.push([index, tasko[1], tasko[2] || false]);
-    });
-    setTaskList(steptaskList);
+    const checkTask = (tasko) => {
+      return tasko[1] === task;
+    };
+    if (taskList.length === 0 || taskList.find(checkTask) === undefined) {
+      const coptaskList = [...taskList];
+      coptaskList.unshift([taskList.length, task]);
+      const steptaskList = [];
+      coptaskList.map((tasko, index) => {
+        steptaskList.push([index, tasko[1], tasko[2] || false]);
+      });
+      setTaskList(steptaskList);
+    } else {
+      alert("tache déja enregistrée");
+    }
   };
   //ci-dessous, la fonction qui enregistre le nom d'une 'task'
   const handleTaskChange = (event) => {
@@ -64,7 +72,7 @@ function App() {
   };
   //eeet zééé baartiiii!!!
   return (
-    <body>
+    <body className={!darktheme ? "daytheme" : "darktheme"}>
       <main className="App">
         <h1>To Do List</h1>
         <section className="allTasks">
@@ -105,8 +113,8 @@ function App() {
           </div>
         </section>
         <section className="menu">
-          <div className="ghost"></div>
-          <div className="listen">
+          <button className="ghost"></button>
+          <div className={darktheme ? "listendark" : "listen"}>
             <article className="taskAddHolder">
               <form className="taskAdder" onSubmit={handleSubmit}>
                 <input
@@ -141,8 +149,14 @@ function App() {
             </article>
           </div>
           <div className="theme">
+            <img src="./themebackground.jpeg" />
             <article className="themebar">
-              <button className="themecommand"></button>
+              <button
+                className={darktheme ? "darkthemecommand" : "themecommand"}
+                onClick={() => {
+                  setDarktheme(!darktheme);
+                }}
+              ></button>
             </article>
           </div>
         </section>

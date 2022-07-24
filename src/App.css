@@ -5,14 +5,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between
+  justify-content: space-between;
+  font-family: sans-serif;
 }
 main {
   height: 80vh;
+  width: 70vw;
+  backdrop-filter: blur(5px) /* grayscale(0.5) */ opacity(1);
+    /* background-color: rgba(241, 0, 0, 0.2); */
+    border: solid rgba(30, 30, 30, 0.1) 4px;
+    border-radius: 1rem;
+  /* padding-top: 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   text-align: center;
+
 }
 h1 {
   font-size: 10vh;
@@ -20,17 +29,28 @@ h1 {
 section.menu {
   height: 6rem;
   width: 70vw;
-  border: solid orangered 4px;
+  max-width: 40rem;
+  border: solid rgba(30, 30, 30, 0.2) 4px;
   display: flex;
   border-radius: 1rem;
+  /* margin-bottom: 1rem; */
   overflow: hidden;
   box-sizing: border-box;
   /* background-color: rgba(200, 200, 200, 0.5); */
 }
 .listen {
   height: 100%;
-  width: 60%; 
-  background-color: aqua;
+  width: calc(100% - 11rem); 
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.listendark {
+  height: 100%;
+  width: calc(100% - 11rem); 
+  background-color: none;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -40,8 +60,11 @@ section.menu {
   height: 100%;
   width: 94%;
   padding-left: 8px;
-  border-left: none;
-  border-right: solid gray 2px;
+  border: none;
+  /* border-right: solid rgba(30, 30, 30, 0.2) 2px; */
+}
+.textincome:focus{
+  border: none;
 }
 .taskAddHolder {
   width: 100%;
@@ -54,7 +77,7 @@ section.menu {
   height: 2rem;
   width: 80%;
   background-color: rgba(200, 200, 200, 0.5);
-  border: solid rgba(200, 200, 200, 0.5) 4px;
+  border: solid rgba(30, 30, 30, 0.2) 4px;
   border-radius: 1rem;
   display:flex;
   justify-content: center;
@@ -67,16 +90,20 @@ section.menu {
   background-color: white;
   padding-right: 10px;
   font-size: 1.8rem;
+  color: black;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.add:hover {
+  cursor: pointer;
+}
 .searchbar {
   height: 2rem;
   width: 80%;
   background-color: rgba(200, 200, 200, 0.5);
-  border: solid rgba(200, 200, 200, 0.5) 4px;
+  border: solid rgba(30, 30, 30, 0.2) 4px;
   border-radius: 1rem;
   display: flex;
   justify-content: center;
@@ -91,6 +118,7 @@ section.menu {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 section.allTasks {
   height: 44vh;
@@ -113,6 +141,9 @@ section.allTasks {
   background-color: orangered;
   /* ne marche pas (n'est pas personalisable?) */
 }
+.checkbox:hover {
+  cursor: pointer;
+}
 .task {
   width: 80%;
   text-align: center;
@@ -126,6 +157,9 @@ section.allTasks {
   background: rgba(255,0,0,0.1);
   border: solid rgba(255,0,0,0.1) 3px;
   border-radius: 1rem;
+}
+.trash:hover {
+  cursor: pointer;
 }
 .taskToDo {
   min-height: 2rem;
@@ -152,37 +186,91 @@ section.allTasks {
 }
 .ghost {
   height: 100%;
-  width: 20%;
-  background-color: blueviolet;
+  width: 5.5rem;
+  background-image: url("../public/questionmark.jpeg");
+  background-size: cover; 
+  border: none;
+}
+.ghost:hover {
+  cursor: pointer;
 }
 .theme {
   height: 100%;
-  width: 20%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
+  width: 5.5rem;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.theme img {
+  height: 100%;
 }
 .themebar {
-  height: 3rem;
-  width: 1rem;
-  background-color: aqua;
+  height: 1rem;
+  width: 3rem;
+  background-color: rgba(30, 30, 30, 0.8);
+  border: solid rgba(30, 30, 30, 0.8) 2px;
   border-radius: 0.5rem;
-  margin-left: 1.4rem;
-  position: relative;
+  margin-left: 1.2rem;
+  position: absolute;
+  top: 3.2rem
 }
 .themecommand {
   height: 1.6rem;
   width: 1.6rem;
-  background-color: red;
+  background-color: lightgreen;
   border: solid rgba(0, 0, 0, 0.8) 4px;
   border-radius: 0.8rem;
   position: absolute;
   left: -0.3rem;
-  top: -0.2rem
+  top: -0.3rem;
+  animation: commandmoveback 0.6s;
+
+}
+.darkthemecommand {
+  height: 1.6rem;
+  width: 1.6rem;
+  background-color: darkslategray;
+  border: solid rgba(0, 0, 0, 0.8) 4px;
+  border-radius: 0.8rem;
+  position: absolute;
+  left: 1.6rem;
+  top: -0.3rem;
+  animation: commandmove 0.6s;
+}
+.themecommand:hover {
+  cursor: pointer;
+}
+.darkthemecommand:hover {
+  cursor: pointer;
+}
+
+.darktheme {
+   background-image: url("../public/darkbackground.jpg");
+   background-size: cover;
+   color: white;
+}
+.daytheme {
+  background-image: url("../public/daybackground.jpeg");
+  background-size: cover;  
 }
 footer {
   height: 20vh;
   width: 100vw;
-  background-color: rgba(200, 200, 200, 0.5);
+  background-color: rgba(200, 200, 200, 0.2);
+  backdrop-filter: blur(5px)
 }
+@keyframes commandmove {
+  from {left: -0.3rem;
+    background-color: lightgreen}
+    to{left: 1.6rem;
+    background-color: darkslategray;}
+}
+@keyframes commandmoveback {
+  from {left: 1.6rem;
+  background-color: darkslategray;}
+  to { left: -0.3rem;
+    background-color: lightgreen;
+  }
+}
+
 
