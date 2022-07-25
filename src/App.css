@@ -26,6 +26,12 @@ main {
 h1 {
   font-size: 10vh;
 }
+h1:hover {
+  cursor: default;
+}
+p:hover {
+  cursor: default;
+}
 section.menu {
   height: 6rem;
   width: 70vw;
@@ -161,6 +167,16 @@ section.allTasks {
 .trash:hover {
   cursor: pointer;
 }
+.trash2 {
+  height: 2rem;
+  width: 2rem;
+  background: rgba(255,0,0,0.1);
+  border: solid rgba(255,0,0,0.1) 3px;
+  border-radius: 1rem;
+}
+.trash2:hover {
+  cursor: not-allowed;
+}
 .taskToDo {
   min-height: 2rem;
   width:calc(100% - 10px);
@@ -255,9 +271,65 @@ section.allTasks {
 }
 footer {
   height: 20vh;
+  min-height: 4rem;
   width: 100vw;
   background-color: rgba(200, 200, 200, 0.2);
-  backdrop-filter: blur(5px)
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#promo {
+  line-height: 40px;
+  font-size: 11px;
+  text-align: center;
+}
+#promo-reacteur {
+  color: #5D48D2;
+  margin-left: 6px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}
+#promo-reacteur:hover {
+  background-color: #333333;
+  cursor: alias;
+}
+#promo-reacteur img {
+  border-radius: 10%;
+  width: 16px;
+}
+#promo-perso {
+  color: #0C66C2;
+  margin-left: 6px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}
+#promo-perso:hover {
+  background-color: #333333;
+  cursor: alias;
+}
+#promo-perso img {
+  width: 16px;
+  border-radius: 7%;
+}
+#promo-github {
+  color: darkorange;
+  margin-left: 6px;
+  background-color: #333333;
+  border-radius: 3px;
+}
+#promo-github:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: alias;
+}
+#promo-github img {
+  width: 16px;
+  border-radius: 50%;
+}
+footer img {
+  position: relative;
+  top: 4px
 }
 @keyframes commandmove {
   from {left: -0.3rem;

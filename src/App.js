@@ -23,7 +23,7 @@ function App() {
       const coptaskList = [...taskList];
       coptaskList.unshift([taskList.length, task]);
       const steptaskList = [];
-      coptaskList.map((tasko, index) => {
+      coptaskList.forEach((tasko, index) => {
         steptaskList.push([index, tasko[1], tasko[2] || false]);
       });
       setTaskList(steptaskList);
@@ -45,7 +45,7 @@ function App() {
       let stepTasko = checkList.filter((tasko) => tasko[0] === index);
       checkList.splice(stepTasko[0][0], 1);
       checkList.unshift(stepTasko[0]);
-      checkList.map((tasko, index) => {
+      checkList.forEach((tasko, index) => {
         tasko.splice(0, 1, index);
       });
       setTaskList(checkList);
@@ -53,7 +53,7 @@ function App() {
       let stepTasko = checkList.filter((tasko) => tasko[0] === index);
       checkList.splice(stepTasko[0][0], 1);
       checkList.push(stepTasko[0]);
-      checkList.map((tasko, index) => {
+      checkList.forEach((tasko, index) => {
         tasko.splice(0, 1, index);
       });
       setTaskList(checkList);
@@ -62,10 +62,49 @@ function App() {
   //ci-dessous, la fonction qui supprime un 'tasko' de la 'tasklist'
   const deleter = (task) => {
     const coptaskList = [...taskList];
-    coptaskList.map((tasko, index) => {
+    coptaskList.forEach((tasko, index) => {
       task === tasko[1] && coptaskList.splice(index, 1);
     });
-    coptaskList.map((tasko, index) => {
+    coptaskList.forEach((tasko, index) => {
+      tasko.splice(0, 1, index);
+    });
+    setTaskList(coptaskList);
+  };
+  const addRandomTask = () => {
+    const randomTask = [
+      [
+        "coder",
+        "peler",
+        "plumer",
+        "scier",
+        "manger",
+        "trier",
+        "plier",
+        "ranger",
+        "essuyer",
+        "balayer",
+        "astiquer",
+      ],
+      [
+        " des patates",
+        " des tomates",
+        " des applis",
+        " des cartons",
+        " des planches",
+        " des dossiers",
+        " des trucs",
+        " des machins",
+        " des meubles",
+        " des vetements",
+        " des assiettes",
+      ],
+    ];
+    const newTask =
+      `${randomTask[0][Math.floor(Math.random() * 11)]}` +
+      `${randomTask[1][Math.floor(Math.random() * 11)]}`;
+    const coptaskList = [...taskList];
+    coptaskList.unshift([0, newTask, false]);
+    coptaskList.forEach((tasko, index) => {
       tasko.splice(0, 1, index);
     });
     setTaskList(coptaskList);
@@ -97,7 +136,7 @@ function App() {
                     />
                     <p className="task">{tasko[1]}</p>
                     <button
-                      className="trash" //suprime le 'tasko'
+                      className={tasko[2] ? "trash" : "trash2"} //suprime le 'tasko'
                       onClick={() => {
                         tasko[2] === true //ne permet la supression que si la 'task' est "accomplie"
                           ? deleter(tasko[1])
@@ -113,7 +152,7 @@ function App() {
           </div>
         </section>
         <section className="menu">
-          <button className="ghost"></button>
+          <button className="ghost" onClick={addRandomTask}></button>
           <div className={darktheme ? "listendark" : "listen"}>
             <article className="taskAddHolder">
               <form className="taskAdder" onSubmit={handleSubmit}>
@@ -149,7 +188,7 @@ function App() {
             </article>
           </div>
           <div className="theme">
-            <img src="./themebackground.jpeg" />
+            <img src="./themebackground.jpeg" alt="yo" />
             <article className="themebar">
               <button
                 className={darktheme ? "darkthemecommand" : "themecommand"}
@@ -161,7 +200,42 @@ function App() {
           </div>
         </section>
       </main>
-      <footer></footer>
+      <footer>
+        {" "}
+        <nav id="promo">
+          Projet créé dans le cadre d'une formation au
+          <a
+            target="_blank"
+            href="https://www.lereacteur.io"
+            rel="noreferrer"
+            id="promo-reacteur"
+          >
+            <img src="./logo-reacteur copie.jpeg" alt="yo" />
+            Réacteur
+          </a>{" "}
+          (promo ORION-2022)
+          <br />
+          par{" "}
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/christophe-lafon-549788243"
+            rel="noreferrer"
+            id="promo-perso"
+          >
+            <img src="./logo-linkedin copie.png" alt="yo" />
+            Christophe Lafon
+          </a>
+          <a
+            target="_blank"
+            href="https://github.com/stinkyFerret01"
+            rel="noreferrer"
+            id="promo-github"
+          >
+            <img src="./github copie.png" alt="yo" />
+            StinkyFerret01
+          </a>
+        </nav>
+      </footer>
     </body>
   );
 }
