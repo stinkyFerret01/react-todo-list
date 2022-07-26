@@ -86,28 +86,36 @@ function App() {
         "astiquer",
       ],
       [
-        " des patates",
-        " des tomates",
+        " les patates",
+        " les tomates",
         " des applis",
         " des cartons",
         " des planches",
         " des dossiers",
         " des trucs",
         " des machins",
-        " des meubles",
+        " les meubles",
         " des vetements",
-        " des assiettes",
+        " les assiettes",
       ],
     ];
-    const newTask =
-      `${randomTask[0][Math.floor(Math.random() * 11)]}` +
-      `${randomTask[1][Math.floor(Math.random() * 11)]}`;
-    const coptaskList = [...taskList];
-    coptaskList.unshift([0, newTask, false]);
-    coptaskList.forEach((tasko, index) => {
-      tasko.splice(0, 1, index);
-    });
-    setTaskList(coptaskList);
+    if (taskList.length < 120) {
+      let newTask = "";
+      do {
+        newTask =
+          `${randomTask[0][Math.floor(Math.random() * randomTask[0].length)]}` +
+          `${randomTask[1][Math.floor(Math.random() * randomTask[1].length)]}`;
+        console.log(newTask);
+      } while (taskList.find((tasko) => tasko[1] === newTask) !== undefined);
+      const coptaskList = [...taskList];
+      coptaskList.unshift([0, newTask, false]);
+      coptaskList.forEach((tasko, index) => {
+        tasko.splice(0, 1, index);
+      });
+      setTaskList(coptaskList);
+    } else {
+      alert("la liste est trop longue pour ajouter une tache aléatoire");
+    }
   };
   //eeet zééé baartiiii!!!
   return (
